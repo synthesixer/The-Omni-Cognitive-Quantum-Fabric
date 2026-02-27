@@ -2,13 +2,13 @@
 
 การพัฒนาระบบวางแผนดำเนินการในระยะเวลารวมทั้งสิ้น 8 สัปดาห์ โดยแบ่งออกเป็น 4 Sprint (Sprint ละ 2 สัปดาห์) ดังนี้:
 
-* **Sprint 1 (Week 1–2): Concept Validation & Architecture Design**
+* **Sprint 1 (Week 1): Concept Validation & Architecture Design**
 กำหนดสถาปัตยกรรมหลัก 4 Layer วิเคราะห์ช่องว่างทางเทคโนโลยี และกำหนดขอบเขต MVP รวมถึงกรณีการใช้งาน (Use Case)
-* **Sprint 2 (Week 3–4): Simulation Model Design**
+* **Sprint 2 (Week 2): Simulation Model Design**
 ออกแบบโมเดลจำลองสำหรับ Quantum State Synchronization, โครงสร้าง Reality-Adaptive AI, ฐานข้อมูล Collective Wisdom Ledger (CWL) และระบบความปลอดภัยผ่าน Decoherence Control
-* **Sprint 3 (Week 5–6): Prototype Development (Concept-Level)**
+* **Sprint 3 (Week 3): Prototype Development (Concept-Level)**
 พัฒนาระบบจำลองการทำงานของโหนดแบบกระจายศูนย์ (Distributed Node) สร้างโมเดลจำลองการประมวลผลแบบซ้อนทับ (Superposition-Based Parallel Processing) และเครื่องมือค้นหาภูมิปัญญารวมหมู่ (Collective Query Engine)
-* **Sprint 4 (Week 7–8): Full System Integration**
+* **Sprint 4 (Week 4): Full System Integration**
 รวมโมดูลจากทุก Layer เข้าเป็น Unified Fabric Model เพื่อทดสอบการสื่อสารแบบ End-to-End และจำลองสถานการณ์การใช้งานจริง เช่น การพยากรณ์ภัยพิบัติ และการจัดการจราจรอัจฉริยะ
 
 ## **2. เครื่องมือและเทคโนโลยีที่ใช้ (Technology Stack)**
