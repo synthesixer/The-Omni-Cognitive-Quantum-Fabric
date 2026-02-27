@@ -1,57 +1,46 @@
 # The Omni-Cognitive Quantum Fabric
-## เอกสารสถาปัตยกรรมระบบ (Architecture Specification) v1.0
+## เอกสารกำหนดบทบาท หน้าที่ และขอบเขตความรับผิดชอบ (Roles, Responsibilities & Boundaries Matrix)
 
 ---
 
-# 1. บทนำ (Overview)
-ในปัจจุบัน สถาปัตยกรรมเครือข่ายดั้งเดิมเริ่มเผชิญกับขีดจำกัดทางกายภาพและการพึ่งพาอุปกรณ์ตัวกลาง **The Omni-Cognitive Quantum Fabric** หรือ *โครงข่ายควอนตัมทางปัญญาแบบองค์รวม* คือสถาปัตยกรรมเครือข่ายแห่งอนาคตที่ก้าวข้ามการส่งข้อมูลแบบแพ็คเกจ สู่การเชื่อมประสานภูมิปัญญาผ่านความคิด (Neural Link) โดยตรง
+# 1. Team Role Assignment Table
 
-ระบบนี้เกิดจากการสังเคราะห์เทคโนโลยีควอนตัม (Quantum Entanglement) การปรับตัวของ AI อัจฉริยะ และการสื่อสารระดับโมเลกุลเข้าด้วยกัน เพื่อสร้างระบบนิเวศที่เชื่อมโยงเข้าสู่ร่างกายมนุษย์ผ่าน Molecular Signaling ระดับนาโน
-
----
-
-# 2. วิสัยทัศน์ (Vision)
-The Omni-Cognitive Quantum Fabric มุ่งเน้นการแก้ปัญหาและสร้างนวัตกรรมเครือข่ายด้วยเป้าหมายหลักดังนี้:
-* **ขจัดการพึ่งพาอุปกรณ์ตัวกลางแบบดั้งเดิม:** ทำให้การสื่อสารเกิดขึ้นโดยตรงระหว่างปลายทางถึงปลายทาง
-* **สร้างระบบนิเวศภูมิปัญญารวมหมู่:** มนุษย์สามารถเข้าถึงข้อมูลและสื่อสารข้ามจักรวาลได้ทันทีโดยไร้ตัวกลาง
-* **ทลายขีดจำกัดการรับรู้:** ขยายขอบเขตสติปัญญาของสิ่งมีชีวิตให้เชื่อมโยงกันได้ตั้งแต่ระดับเซลล์ไปจนถึงระดับจักรวาล
+| Role | Assigned To | Primary Responsibilities | Secondary Responsibilities | Decision Authority | Reporting To |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Architect** (Interface Layer) | **นายจิรภัทร สีสาร** | • ออกแบบการเชื่อมต่อ Neural Link <br> • กำหนดโครงสร้าง Collective Wisdom <br> • วาง Protocol การเข้าถึงข้อมูล | • อนุมัติ Code Review <br> • ดูแล Technical Debt <br> • แนะนำ Design Pattern | • คำขาดด้านสถาปัตยกรรม <br> • การเลือก Technology Stack | Instructor |
+| **Engineer** (Transmission) | **นายพุฒิเมธ ชมศรีสวัสดิ์** | • พัฒนา Quantum State Sync <br> • เขียน Code ระบบ Quantum Backbone <br> • ทำ Simulation การส่งข้อมูล | • แก้ไข Bug <br> • จัดทำ Code Documentation <br> • ปรับปรุง Performance | • วิธีการ Implementation <br> • โครงสร้าง Code <br> • การเลือก Library | Architect |
+| **Specialist** (Adaptive Logic) | **นายวงศกร สงวนกลิ่น** | • กำหนดกฎ Reality-Adaptive AI <br> • วิจัยอัลกอริทึมการปรับตัวของเครือข่าย <br> • ระบุเคสการใช้งาน (Edge Case) | • จัดทำเอกสารทางเทคนิค <br> • ออกแบบ Validation Scenarios <br> • ทดสอบระบบในส่วน Specialist | • Logic ของกฎการปรับตัว <br> • ทิศทางการวิจัยระบบ AI | Architect |
+| **DevOps & Bio-Specialist** | **นายชัชรัสย์ ทองสืบสาย** | • ออกแบบ Bio-Molecular Diffusion <br> • ตั้งค่า CI/CD และ GitHub Actions <br> • จัดการ Version Control | • Hosting เอกสารโครงการ <br> • เขียนสคริปต์สำหรับการ Deploy <br> • ดูแลความปลอดภัยชีวภาพ | • เครื่องมือที่ใช้ใน Pipeline <br> • โครงสร้างการจัดเก็บไฟล์ | Architect |
 
 ---
 
-# 3. สถาปัตยกรรมภาพรวม (High-Level Architecture)
-ระบบประกอบด้วย 4 ส่วนหลักที่ทำงานเชื่อมโยงกันอย่างไร้รอยต่อ:
+# 2. Responsibility by Artifact (ตารางความรับผิดชอบตามชิ้นงาน)
 
+| Artifact | Primary Responsible | Support | Approval |
+| :--- | :--- | :--- | :--- |
+| **Architecture Spec** | Architect | All Members | Instructor |
+| **Quantum Sync Engine** | Engineer | Specialist | Architect |
+| **Adaptive AI Logic** | Specialist | Engineer | Architect |
+| **Bio-Interface Design** | DevOps/Specialist | Architect | Architect |
+| **GitHub Repository** | DevOps | All Members | Architect |
+| **Final Presentation** | All Members | All Members | Instructor |
 
+---
 
-```mermaid
-graph TD
-    A[Biological Bridge Layer <br> Bio-Molecular Diffusion]
-    B[Interface Layer <br> Neural Link]
-    C[Adaptive Control Layer <br> Reality-Adaptive AI]
-    D[Transmission Layer <br> Quantum State Synchronization]
+# 3. Role Boundaries Quick Reference (ขอบเขตหน้าที่)
 
-    A <--> B
-    B <--> C
-    C <--> D
-```
+| Role | Primary Zone (สิ่งที่ควรทำ) | Stay Out Of (สิ่งที่ไม่ควรแทรกแซง) |
+| :--- | :--- | :--- |
+| **Architect** | การออกแบบ Interface และภาพรวมระบบ | การเขียน Code ในรายละเอียดทุกบรรทัด |
+| **Engineer** | การปรับจูน Quantum Sync และประสิทธิภาพ | การตัดสินใจเปลี่ยนโครงสร้างสถาปัตยกรรม |
+| **Specialist** | กฎการปรับตัวของ AI และความเสถียร | การเขียน Core Protocol ของระบบนำส่ง |
+| **DevOps** | โครงสร้างพื้นฐาน และการเชื่อมต่อชีวภาพ | การออกแบบอัลกอริทึม AI หลัก |
 
-# 4. องค์ประกอบหลักของระบบ (Core Components)
-4.1 ส่วนปฏิสัมพันธ์ (Interface Layer)
-* ยึดถือแนวคิด Neural Link และภูมิปัญญารวมหมู่เป็นแกนกลาง 
-* ทำให้ผู้ใช้งานสามารถสื่อสารผ่านความคิดและเข้าถึงฐานข้อมูลกลางได้ทันทีเสมือนเป็นความทรงจำของตนเอง 
-* มี AI เป็นตัวกลางคอยจัดสรรข้อมูลที่ถูกต้องและป้องกันไม่ให้ความคิดของผู้อื่นไหลเข้าท่วมท้นความเป็นส่วนตัว 
+---
 
-# 4.2 ส่วนเชื่อมต่อทางชีวภาพ (Biological Bridge Layer)
-* เข้าถึงระดับเซลล์สมองผ่าน Bio-Molecular Diffusion 
-* ใช้โมเลกุลสารเคมีระดับนาโนเป็นตัวกลางในการแปลงสัญญาณควอนตัมให้เป็นกระแสประสาทอย่างนุ่มนวลและเป็นธรรมชาติ 
-* ปล่อยให้แพร่กระจายออกไปคล้ายกับกลิ่นหรือฟีโรโมน โดยตัวรับที่มีรหัสตรงกันเท่านั้นจึงจะสามารถดูดซับและเข้าใจข้อมูลได้ 
+# 4. Role Assignment Summary (Peer Grade Reference)
 
-# 4.3 ส่วนควบคุมและปรับตัว (Adaptive Control Layer)
-* บริหารจัดการด้วย Reality-Adaptive AI 
-* คอยวิเคราะห์และปรับเปลี่ยนโปรโตคอลการเชื่อมต่อให้เสถียรที่สุดตามสภาพแวดล้อมจริงที่เปลี่ยนแปลงตลอดเวลา 
-* ช่วยคำนวณทิศทางและความเข้มข้นของการปล่อยสารเคมี เพื่อให้ข้อมูลครอบคลุมพื้นที่เป้าหมายในสภาวะของเหลวไหลเวียนได้อย่างมีประสิทธิภาพ 
+เพื่อให้สอดคล้องกับมาตรฐานความร่วมมือ สมาชิกทุกคนในกลุ่ม **The Omni-Cognitive Quantum Fabric** มีพันธกิจร่วมกันในการรักษาคุณภาพงานให้ได้ตามเกณฑ์สูงสุด (10/10) โดยยึดถือความรับผิดชอบตามตารางข้างต้นอย่างเคร่งครัด
 
-# 4.4 ส่วนนำส่งข้อมูล (Transmission Layer) * 
-* ขับเคลื่อนด้วย Quantum State Synchronization 
-สร้างความพัวพันทางควอนตัมเพื่อรับส่งเจตจำนงแบบไร้ความหน่วง (Zero Latency) และปลอดภัยสูงสุด แม้ระยะทางจะไกลข้ามดาราจักร 
-* เมื่อฝั่งหนึ่งเปลี่ยนสถานะ อีกฝั่งจะรับรู้การเปลี่ยนแปลงนั้นได้ทันทีโดยไม่ต้องรอให้ข้อมูลเดินทางผ่านสาย
+---
+*จัดทำเพื่อใช้ในโปรเจกต์สถาปัตยกรรมเครือข่ายแห่งอนาคต (Omni-Cognitive Quantum Fabric)*
