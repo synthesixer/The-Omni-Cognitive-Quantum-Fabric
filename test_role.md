@@ -1,54 +1,94 @@
-# TS-Com Project: Roles, Responsibilities & Boundaries Matrix
-## Project: The Omni-Cognitive Quantum Fabric (v1.0)
+# The Omni-Cognitive Quantum Fabric
+## Roles and Responsibility Document (Comprehensive Version)
 
 ---
 
-# 1. Team Role Assignment Table
+# 1. Team Members
 
-| Role | Assigned To | Primary Responsibilities | Secondary Responsibilities | Decision Authority | Reporting To |
+| No. | Name | Student ID | Role |
+|----|------|------------|------|
+| 1 | นายจิรภัทร สีสาร | 673380574-5 | Architect |
+| 2 | นายพุฒิเมธ ชมศรีสวัสดิ์ | 673380417-1 | Engineer |
+| 3 | นายวงศกร สงวนกลิ่น | 673380424-4 | Specialist |
+| 4 | นายชัชรัสย์ ทองสืบสาย | 673380579-5 | DevOps & Tester/QA |
+
+---
+
+# 2. ตารางกำหนดบทบาทของทีม (Team Role Assignment Table)
+
+| บทบาท (Role) | ผู้รับผิดชอบ | หน้าที่หลัก (Primary) | หน้าที่รอง (Secondary) | อำนาจการตัดสินใจ | รายงานต่อ |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Architect** | **นายจิรภัทร สีสาร** | • System-wide design decisions <br> • Layer interface definitions <br> • Protocol specification <br> • Architecture documentation | • Code review approval <br> • Technical debt tracking <br> • Design pattern guidance | • Final say on architecture <br> • Interface changes <br> • Technology stack selection | Instructor |
-| **Engineer** | **นายพุฒิเมธ ชมศรีสวัสดิ์** | • Core protocol implementation <br> • Algorithm development <br> • Simulation coding <br> • Performance optimization | • Bug fixes <br> • Code documentation <br> • Technical prototyping | • Implementation approach <br> • Code structure <br> • Tool/library selection | Architect |
-| **Specialist** | **นายวงศกร สงวนกลิ่น** | • Paradox rule definitions <br> • Reality-adaptive AI research <br> • Domain expertise <br> • Edge case identification | • Technical documentation <br> • Validation scenarios <br> • Specialist testing | • AI Logic and Rules <br> • Domain-specific decisions <br> • Research direction | Architect |
-| **DevOps & Tester/QA** | **นายชัชรัสย์ ทองสืบสาย** | • Environment setup <br> • CI/CD pipeline management <br> • Version control management <br> • **Test plan & Test reports** <br> • **Quality assurance execution** | • Documentation hosting <br> • Build automation <br> • Deployment scripts <br> • **Bug tracking & Validation** | • Tooling & Pipeline selection <br> • Deployment strategy <br> • **Test passage criteria** | Architect |
+| **Architect** | จิรภัทร | ออกแบบสถาปัตยกรรม Interface และ Neural Link ทั้งระบบ | ตรวจสอบความสอดคล้องของเอกสาร Architecture Spec | ตัดสินใจขั้นสุดท้ายด้านโครงสร้างและ Protocol | อาจารย์ผู้สอน |
+| **Engineer** | พุฒิเมธ | พัฒนาระบบนำส่งข้อมูลและ Quantum State Synchronization | ปรับปรุงประสิทธิภาพ (Optimization) และแก้ Bug | ตัดสินใจแนวทางเชิงเทคนิคและการ Implementation | Architect |
+| **Specialist** | วงศกร | วิจัยและกำหนดกฎเกณฑ์ Adaptive AI และ Reality Logic | วิเคราะห์กรณีใช้งานพิเศษ (Edge Cases) | อนุมัติตรรกะของกฎเกณฑ์ในระบบ AI | Architect |
+| **DevOps & Tester/QA** | ชัชรัสย์ | จัดการ CI/CD, GitHub Repo และ**ออกแบบแผนการทดสอบ (Test Plan)** | ดูแลสภาพแวดล้อมระบบและ**จัดทำรายงานการทดสอบ (Test Report)** | ตัดสินใจด้านเครื่องมือ Pipeline และเกณฑ์การผ่านการทดสอบ | Architect |
 
 ---
 
-# 2. Responsibility by Artifact (RACI-style Matrix)
+# 3. รายละเอียดความรับผิดชอบแบ่งตาม Layer (Layer-Based Responsibilities)
 
-| Artifact | Primary Responsible | Support | Approval |
-| :--- | :--- | :--- | :--- |
-| **Architecture Specification** | Architect | Specialist | Instructor |
-| **Source Code** | Engineer | Architect | Architect |
-| **Test Plan** | **Tester/QA** | Engineer | Architect |
-| **Test Reports** | **Tester/QA** | All Members | Architect |
-| **User Documentation** | DevOps | All Members | Architect |
-| **Demo / Simulation Video** | Engineer | All Members | DevOps |
-| **Final Presentation** | All Members | All Members | Instructor |
-| **Submission Package** | DevOps | All Members | Instructor |
+### 3.1 Interface Layer (Neural Link)
+**Responsible: Architect (จิรภัทร)**
+- ออกแบบโครงสร้างจุดเชื่อมต่อระหว่างมนุษย์และเครือข่ายภูมิปัญญารวมหมู่
+- กำหนดมาตรฐานการเข้าถึงข้อมูลและการจัดการความเป็นส่วนตัว (Privacy Management)
+- ดูแลการบูรณาการข้อมูลจากทุกส่วนเข้าสู่ Interface กลาง
+
+### 3.2 Transmission Layer (Quantum Backbone)
+**Responsible: Engineer (พุฒิเมธ)**
+- พัฒนาและจำลองระบบการพัวพันทางควอนตัม (Quantum Entanglement)
+- จัดการเสถียรภาพของการรับส่งเจตจำนงแบบไร้ความหน่วง (Zero Latency)
+- ควบคุมดูแล Quantum State Synchronization ให้ทำงานได้อย่างแม่นยำ
+
+### 3.3 Adaptive Control Layer (AI Logic)
+**Responsible: Specialist (วงศกร)**
+- ออกแบบอัลกอริทึม Reality-Adaptive AI เพื่อปรับจูนระบบตามสภาพแวดล้อม
+- กำหนดเงื่อนไขการตัดสินใจของโหนดสื่อสารในสภาวะที่เกิดความแปรปรวนของข้อมูล
+- วิจัยด้านการขยายขอบเขตการรับรู้ผ่านตรรกะ AI ชั้นสูง
+
+### 3.4 Biological Bridge & Quality Assurance
+**Responsible: DevOps & Tester/QA (ชัชรัสย์)**
+- ออกแบบกลไกการสื่อสารระดับ Bio-Molecular Diffusion (สารเคมีระดับนาโน)
+- ตรวจสอบคุณภาพและความถูกต้องของระบบในทุก Layer ผ่านการทดสอบที่เข้มงวด
+- บริหารจัดการโครงสร้างพื้นฐานบน GitHub และระบบ CI/CD เพื่อความต่อเนื่องของงาน
+
+---
+
+# 4. ตาราง RACI (Responsibility Assignment Matrix)
+
+| กิจกรรม (Activity) | Architect | Engineer | Specialist | DevOps & QA |
+| :--- | :---: | :---: | :---: | :---: |
+| Architecture Design | **R/A** | C | C | I |
+| Quantum Sync Implementation | C | **R/A** | I | C |
+| Adaptive AI Rules | C | I | **R/A** | I |
+| Bio-Bridge Connectivity | I | I | C | **R/A** |
+| System Testing & Validation | A | C | I | **R** |
+| GitHub & Document Management | A | I | I | **R** |
+
+*Legend: R = Responsible, A = Accountable, C = Consulted, I = Informed*
 
 ---
 
-# 3. Role Boundaries Quick Reference Card
+# 5. ขอบเขตการสื่อสารภายในทีม (Communication Matrix)
 
-| ROLE | PRIMARY ZONE | STAY OUT OF |
-| :--- | :--- | :--- |
-| **ARCHITECT** | Design, Interfaces, High-level Logic | Line-by-line coding of sub-modules |
-| **ENGINEER** | Implementation, Optimization, Prototyping | Final architecture decisions |
-| **SPECIALIST** | Domain rules, AI Research, Logic Edge Cases | Core infrastructure coding |
-| **DEVOPS** | Infrastructure, Deployment, Automation | Algorithm design and AI modeling |
-| **TESTER/QA** | Testing, Quality Control, Validation | Implementation/Code Fixes |
+| จาก \ ถึง | Architect | Engineer | Specialist | DevOps & QA |
+| :--- | :--- | :--- | :--- | :--- |
+| **Architect** | - | โครงสร้าง Interface | ตรรกะภาพรวม | เกณฑ์การทดสอบ |
+| **Engineer** | สถานะการส่งข้อมูล | - | การเชื่อมต่อ AI | ความพร้อมจำลองระบบ |
+| **Specialist** | รายงานผล AI | กฎการส่งข้อมูล | - | ผลกระทบต่อชีวภาพ |
+| **DevOps & QA** | ผลการตรวจสอบ | ข้อเสนอแนะ Bug | ปัญหาตรรกะ | - |
+
+---
+
+# 6. เส้นทางการยกระดับปัญหา (Escalation Path)
+
+1. **ระดับปฏิบัติการ:** ผู้รับผิดชอบเลเยอร์นั้นๆ ดำเนินการแก้ไขเบื้องต้น
+2. **ระดับเทคนิค:** หากแก้ไม่ได้ใน 4 ชม. ให้ยกระดับปรึกษา Architect
+3. **ระดับทีม:** หากมีผลกระทบข้าม Layer ให้ประชุมร่วมกันเพื่อหาข้อสรุป
+4. **ระดับสุดท้าย:** หากไม่สามารถตกลงกันได้ ให้ Architect เป็นผู้ตัดสินชี้ขาด (Final Say)
 
 ---
 
-# 4. Collaboration & Decision Framework
-
-### 4.1 Decision Authority
-* **Technical Disputes:** ในกรณีที่มีความขัดแย้งทางเทคนิค ให้เจ้าของบทบาทใน Zone นั้นๆ เป็นผู้ตัดสินใจขั้นสุดท้าย (Final Decision) หากมีผลกระทบข้าม Layer ให้ Architect เป็นผู้ชี้ขาด
-* **Quality Gates:** ชิ้นงานทุุกชิ้นต้องผ่านการตรวจสอบจาก Tester/QA และได้รับการอนุมัติจาก Architect ก่อนถือว่า "Complete"
-
-### 4.2 Documentation Standard
-* สมาชิกทุกคนต้องรักษามาตรฐานการเขียนเอกสารตาม TS-Com Documentation Suite โดยเน้นความชัดเจนของข้อมูลและรูปแบบที่เป็นสากล
+# 7. Commitment Statement
+พวกเราสมาชิกกลุ่ม **The Omni-Cognitive Quantum Fabric** ทุกคน มุ่งมั่นที่จะปฏิบัติหน้าที่ตามที่ได้รับมอบหมายอย่างเต็มความสามารถ เพื่อสร้างนวัตกรรมเครือข่ายที่ทลายทุกขีดจำกัดของการสื่อสาร
 
 ---
-**This roles, responsibilities, and boundaries table provides clear guidance for all team members, reduces conflict, and ensures accountability throughout the project. Each team member should review and acknowledge their assigned responsibilities.**
