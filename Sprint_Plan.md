@@ -3,22 +3,22 @@
 
 Project Status: Completed  
 Team: Net Network Technology  
-Total Duration: 8 Weeks  
-Sprint Structure: 4 Sprints (2 Weeks per Sprint)
+Total Duration: 4 Weeks  
+Sprint Structure: 4 Sprints (1 Weeks per Sprint)
 
 ---
 
 # Project Timeline Overview (8 Weeks)
 
-- Sprint 1: Week 1–2
-- Sprint 2: Week 3–4
-- Sprint 3: Week 5–6
-- Sprint 4: Week 7–8
+- Sprint 1: Week 1
+- Sprint 2: Week 2
+- Sprint 3: Week 3
+- Sprint 4: Week 4
 
 ---
 
 # Sprint 1: Concept Validation & Architecture Design  
-Duration: 2 Weeks (Week 1–2)  
+Duration: 1 Weeks (Week 1)  
 Status: Completed  
 
 ## Objectives Achieved
@@ -36,7 +36,7 @@ Status: Completed
 ---
 
 # Sprint 2: Simulation Model Design  
-Duration: 2 Weeks (Week 3–4)  
+Duration: 1 Weeks (Week 2)  
 Status: Completed  
 
 ## Objectives Achieved
@@ -54,7 +54,7 @@ Status: Completed
 ---
 
 # Sprint 3: Prototype Development (Concept-Level)  
-Duration: 2 Weeks (Week 5–6)  
+Duration: 1 Weeks (Week 3)  
 Status: Completed  
 
 ## Objectives Achieved
@@ -72,7 +72,7 @@ Status: Completed
 ---
 
 # Sprint 4: Full System Integration  
-Duration: 2 Weeks (Week 7–8)  
+Duration: 1 Weeks (Week 4)  
 Status: Completed  
 
 ## Objectives Achieved
