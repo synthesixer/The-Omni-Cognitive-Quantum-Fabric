@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omni-Cognitive Quantum Fabric | Interactive Nexus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;600;700&family=Sarabun:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sci-fi': ['Orbitron', 'sans-serif'],
+                        'ui': ['Rajdhani', 'sans-serif'],
+                        'thai': ['Sarabun', 'sans-serif'],
+                    },
+                    colors: {
+                        neon: {
+                            cyan: '#00f3ff',
+                            blue: '#0066ff',
+                            purple: '#bc13fe',
+                            green: '#00ff66',
+                            red: '#ff003c',
+                        }
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3)',
+                        'neon-red': '0 0 10px rgba(255, 0, 60, 0.5), 0 0 20px rgba(255, 0, 60, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #05050a;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(0, 102, 255, 0.1) 0%, rgba(0, 0, 0, 1) 100%),
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 30px 30px, 30px 30px;
+            color: #e0e0e0;
+            overflow: hidden; /* Prevent body scroll */
+        }
+        
+        .panel {
+            background: rgba(10, 15, 30, 0.7);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 10px; height: 10px;
+            border-top: 2px solid #00f3ff;
+            border-left: 2px solid #00f3ff;
+            pointer-events: none;
+        }
+        .panel::after {
+            content: '';
+            position: absolute;
+            bottom: 0; right: 0;
+            width: 10px; height: 10px;
+            border-bottom: 2px solid #00f3ff;
+            border-right: 2px solid #00f3ff;
+            pointer-events: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.5); }
+        ::-webkit-scrollbar-thumb { background: #00f3ff; border-radius: 2px; }
+
+        .scanline {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 243, 255, 0.02) 51%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .glitch-text { animation: glitch 3s infinite; }
+        .glitch-red { animation: glitch-red 0.5s infinite; color: #ff003c; text-shadow: 0 0 10px #ff003c; }
+
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 rgba(255,0,0,.75), -0.05em -0.025em 0 rgba(0,255,0,.75), -0.025em 0.05em 0 rgba(0,0,255,.75); }
+            14% { text-shadow: 0.05em 0 0 rgba(255,0,0,.75), -0.05em -0.025em 0 rgba(0,255,0,.75), -0.025em 0.05em 0 rgba(0,0,255,.75); }
+            15% { text-shadow: -0.05em -0.025em 0 rgba(255,0,0,.75), 0.025em 0.025em 0 rgba(0,255,0,.75), -0.05em -0.05em 0 rgba(0,0,255,.75); }
+            49% { text-shadow: -0.05em -0.025em 0 rgba(255,0,0,.75), 0.025em 0.025em 0 rgba(0,255,0,.75), -0.05em -0.05em 0 rgba(0,0,255,.75); }
+            50% { text-shadow: 0.025em 0.05em 0 rgba(255,0,0,.75), 0.05em 0 0 rgba(0,255,0,.75), 0 -0.05em 0 rgba(0,0,255,.75); }
+            99% { text-shadow: 0.025em 0.05em 0 rgba(255,0,0,.75), 0.05em 0 0 rgba(0,255,0,.75), 0 -0.05em 0 rgba(0,0,255,.75); }
+            100% { text-shadow: -0.025em 0 0 rgba(255,0,0,.75), -0.025em -0.025em 0 rgba(0,255,0,.75), -0.025em -0.05em 0 rgba(0,0,255,.75); }
+        }
+
+        @keyframes glitch-red {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+
+        /* Button hover effects */
+        .btn-interactive {
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-interactive:hover {
+            box-shadow: 0 0 15px currentColor;
+            background-color: rgba(currentcolor, 0.2);
+        }
+        .btn-interactive:active { transform: scale(0.95); }
+    </style>
+</head>
+<body class="font-ui h-screen w-full flex flex-col p-4 md:p-6 overflow-hidden"> <!-- Added overflow-hidden to body -->
+    <div class="scanline"></div>
+
+    <!-- Header -->
+    <header class="flex justify-between items-end border-b border-neon-cyan/30 pb-3 mb-4 flex-none">
+        <div>
+            <h1 class="font-sci-fi text-3xl text-neon-cyan tracking-wider drop-shadow-[0_0_8px_rgba(0,243,255,0.8)]">NEXUS CONTROL</h1>
+            <h2 class="font-thai text-sm text-gray-400 mt-1">The Omni-Cognitive Quantum Fabric // Interactive Dashboard</h2>
+        </div>
+        <div class="text-right">
+            <div class="font-sci-fi text-neon-purple text-xl" id="system-time">00:00:00</div>
+            <div class="font-sci-fi text-xs text-neon-green mt-1 flex items-center justify-end gap-2" id="system-status">
+                <span class="w-2 h-2 rounded-full bg-neon-green animate-pulse"></span> SYSTEM ONLINE
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Grid: Added min-h-0 and overflow-hidden to prevent vertical stretch -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 flex-1 min-h-0 overflow-hidden pb-4">
+        
+        <!-- Left Column: Added min-h-0 -->
+        <div class="md:col-span-3 flex flex-col gap-4 h-full min-h-0">
+            
+            <!-- Quantum Entanglement Status -->
+            <div class="panel p-4 flex-none">
+                <h3 class="font-sci-fi text-neon-cyan text-sm tracking-widest mb-3 border-b border-white/10 pb-1">TRANSMISSION LAYER</h3>
+                
+                <div class="flex flex-col gap-4 justify-center">
+                    <div>
+                        <div class="text-xs text-gray-400 font-thai mb-1">Quantum Network Latency</div>
+                        <div id="latency-display" class="font-sci-fi text-4xl text-neon-green font-bold drop-shadow-[0_0_10px_rgba(0,255,102,0.8)] glitch-text">
+                            0.000 <span class="text-xl text-neon-green/70">ms</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs text-gray-400 font-thai mb-1">
+                            <span>Decoherence Level</span>
+                            <span id="decoherence-val" class="text-neon-cyan transition-colors">0.012%</span>
+                        </div>
+                        <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden">
+                            <div id="decoherence-bar" class="h-full bg-neon-cyan w-[5%] transition-all duration-300 shadow-[0_0_10px_#00f3ff]"></div>
+                        </div>
+                    </div>
+
+                    <div class="mt-2">
+                        <button onclick="triggerOverride()" class="btn-interactive w-full text-neon-purple border border-neon-purple bg-neon-purple/10 text-xs font-sci-fi py-2 rounded">
+                            OVERRIDE PROTOCOL
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reality-Adaptive AI Log (THE FIX IS HERE) -->
+            <div class="panel p-4 flex-1 flex flex-col min-h-0">
+                <h3 class="font-sci-fi text-neon-purple text-sm tracking-widest mb-2 border-b border-white/10 pb-1 flex justify-between items-center flex-none">
+                    ADAPTIVE AI 
+                    <span class="text-[10px] text-gray-500">LIVE LOG</span>
+                </h3>
+                
+                <!-- Wrapper กล่องนี้จะบังคับให้เนื้อหาอยู่แค่ในพื้นที่ที่กำหนด (Bulletproof Wrapper) -->
+                <div class="flex-1 relative min-h-0 mt-2">
+                    <!-- กล่อง Log ใช้ absolute inset-0 ให้เกาะติดขอบ Wrapper โดยไม่ดันขนาด Container -->
+                    <div id="ai-log" class="absolute inset-0 overflow-y-auto font-sci-fi text-[11px] space-y-2 pr-2 flex flex-col-reverse">
+                        <!-- Logs generated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Column: Added min-h-0 -->
+        <div class="md:col-span-5 flex flex-col h-full min-h-0">
+            <div class="panel p-4 flex-1 flex flex-col min-h-0">
+                <div class="flex justify-between items-start mb-2 flex-none">
+                    <div>
+                        <h3 class="font-sci-fi text-white text-sm tracking-widest flex items-center gap-2">
+                            USE CASE 01: SMART TRAFFIC 
+                        </h3>
+                        <div class="font-thai text-[11px] text-gray-400 mt-1">ทดสอบระบบจราจรไร้ไฟแดงผ่าน Quantum Entanglement</div>
+                    </div>
+                    <button id="sync-btn" onclick="toggleSync()" class="btn-interactive text-[10px] border border-neon-green text-neon-green px-2 py-1 rounded bg-neon-green/10 font-sci-fi">
+                        SYNC: ON
+                    </button>
+                </div>
+                
+                <div class="flex-1 w-full relative min-h-0 bg-black/80 rounded border border-white/10 overflow-hidden" id="traffic-container">
+                    <canvas id="trafficCanvas" class="absolute inset-0 w-full h-full"></canvas>
+                    
+                    <div class="absolute top-2 left-2 font-sci-fi text-[10px] text-neon-cyan pointer-events-none z-10">
+                        <div id="sync-status-text">SYNC MODE: PERFECT</div>
+                        <div>VEHICLES: <span id="vehicle-count">0</span></div>
+                        <div id="collision-warn" class="text-neon-red hidden animate-pulse mt-1">COLLISION DETECTED!</div>
+                    </div>
+                </div>
+                
+                <p class="font-thai text-[10px] text-gray-500 mt-2 flex-none">
+                    * Interactive: ลองกดปุ่ม SYNC เพื่อปิดระบบควอนตัม รถจะวิ่งแบบคาดเดาไม่ได้และเกิดการชน (สีแดง)
+                </p>
+            </div>
+        </div>
+
+        <!-- Right Column: Added min-h-0 -->
+        <div class="md:col-span-4 flex flex-col gap-4 h-full min-h-0">
+            
+            <!-- Disaster Prediction Use Case -->
+            <div class="panel p-4 flex-1 flex flex-col min-h-0">
+                <div class="flex justify-between items-start mb-2 flex-none">
+                    <div>
+                        <h3 class="font-sci-fi text-white text-sm tracking-widest">USE CASE 02: DISASTER</h3>
+                        <div class="font-thai text-[11px] text-gray-400 mt-1">AI ทำนายทิศทางระดับโมเลกุล</div>
+                    </div>
+                    <button onclick="rescanStorm()" class="btn-interactive text-[10px] border border-neon-cyan text-neon-cyan px-2 py-1 rounded bg-neon-cyan/10 font-sci-fi">
+                        FORCE RESCAN
+                    </button>
+                </div>
+                
+                <div class="flex-1 w-full relative min-h-0 bg-black/80 rounded border border-white/10 overflow-hidden" id="disaster-container">
+                    <canvas id="disasterCanvas" class="absolute inset-0 w-full h-full"></canvas>
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)] pointer-events-none z-10"></div>
+                </div>
+            </div>
+
+            <!-- Collective Wisdom Network -->
+            <div class="panel p-4 flex-1 flex flex-col min-h-0">
+                <div class="flex justify-between items-start mb-2 flex-none">
+                    <div>
+                        <h3 class="font-sci-fi text-white text-sm tracking-widest">INTERFACE LAYER</h3>
+                        <div class="font-thai text-[11px] text-gray-400 mt-1">เครือข่ายภูมิปัญญา (CWL)</div>
+                    </div>
+                    <button onclick="injectNode()" class="btn-interactive text-[10px] border border-neon-purple text-neon-purple px-2 py-1 rounded bg-neon-purple/10 font-sci-fi">
+                        INJECT NODE
+                    </button>
+                </div>
+                
+                <div class="flex-1 w-full relative min-h-0 bg-black/50 rounded overflow-hidden" id="network-container">
+                    <canvas id="networkCanvas" class="absolute inset-0 w-full h-full"></canvas>
+                    <div class="absolute bottom-2 right-2 text-[10px] text-gray-500 font-sci-fi pointer-events-none z-10">
+                        NODES: <span id="node-count">40</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts for Logic & Simulations -->
+    <script>
+        // --- 1. General UI & System Clock ---
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('system-time').innerText = now.toLocaleTimeString('en-US', { hour12: false }) + '.' + now.getMilliseconds().toString().padStart(3, '0');
+        }
+        setInterval(updateTime, 47);
+
+        let isSystemStable = true;
+        let decoherenceBase = 0.01;
+
+        setInterval(() => {
+            let val = (Math.random() * 0.03 + decoherenceBase);
+            if(val > 0.9) val = 0.99;
+            
+            const valEl = document.getElementById('decoherence-val');
+            const barEl = document.getElementById('decoherence-bar');
+            
+            valEl.innerText = val.toFixed(4) + '%';
+            barEl.style.width = (val * 100) + '%';
+
+            if(val > 0.5) {
+                valEl.classList.add('text-neon-red');
+                valEl.classList.remove('text-neon-cyan');
+                barEl.classList.add('bg-neon-red');
+                barEl.classList.remove('bg-neon-cyan');
+                barEl.style.boxShadow = '0 0 10px #ff003c';
+            } else {
+                valEl.classList.remove('text-neon-red');
+                valEl.classList.add('text-neon-cyan');
+                barEl.classList.remove('bg-neon-red');
+                barEl.classList.add('bg-neon-cyan');
+                barEl.style.boxShadow = '0 0 10px #00f3ff';
+            }
+        }, 1500);
+
+        function triggerOverride() {
+            addCustomLog("[MANUAL] Administrator forced protocol override.", "text-neon-red");
+            addCustomLog("[WARNING] Decoherence spike detected in Sector 4.", "text-neon-red");
+            decoherenceBase = 0.8;
+            setTimeout(() => {
+                decoherenceBase = 0.01;
+                addCustomLog("[AI] Reality-Adaptive model restored stability.", "text-neon-green");
+            }, 3000);
+        }
+
+        // --- 2. AI Logs Simulation ---
+        const logMessages = [
+            "[AI] Adjusting frequency due to solar flare anomalies.",
+            "[SYNC] Quantum entanglement stable across active nodes.",
+            "[BIO] Molecular interface re-routing via sector 7.",
+            "[CWL] Collective Memory Ledger synced successfully.",
+            "[SECURITY] Intent Filtering active: Blocked intrusive query.",
+            "[AI] Reality-Adaptive model recalculated environmental variables.",
+            "[NET] Zero-Latency confirmed. Fabric operating optimally."
+        ];
+        const logColors = ['text-neon-cyan', 'text-neon-green', 'text-neon-purple', 'text-white'];
+
+        function addCustomLog(msg, colorClass) {
+            const logContainer = document.getElementById('ai-log');
+            const time = new Date().toLocaleTimeString('en-US', { hour12: false });
+            const logElement = document.createElement('div');
+            logElement.className = `opacity-0 transition-opacity duration-500 flex gap-1 border-l border-white/10 pl-2 py-0.5 mt-1`;
+            logElement.innerHTML = `<span class="text-gray-600 w-16 flex-none">[${time}]</span> <span class="${colorClass}">${msg}</span>`;
+            
+            logContainer.prepend(logElement);
+            if (logContainer.children.length > 30) logContainer.removeChild(logContainer.lastChild);
+            setTimeout(() => logElement.classList.remove('opacity-0'), 10);
+        }
+
+        function autoLog() {
+            if(Math.random() > 0.3) {
+                const msg = logMessages[Math.floor(Math.random() * logMessages.length)];
+                const color = logColors[Math.floor(Math.random() * logColors.length)];
+                addCustomLog(msg, color);
+            }
+        }
+        setInterval(autoLog, 2000);
+        autoLog(); autoLog();
+
+        // --- Canvas Setup ---
+        function resizeCanvas(canvas, containerId) {
+            const container = document.getElementById(containerId);
+            const rect = container.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+        }
+
+        // --- 3. Smart Traffic Simulation Canvas ---
+        const tfCanvas = document.getElementById('trafficCanvas');
+        const tfCtx = tfCanvas.getContext('2d');
+        
+        let cars = [];
+        let isSyncActive = true;
+        let trafficFrameCount = 0;
+
+        function toggleSync() {
+            isSyncActive = !isSyncActive;
+            const btn = document.getElementById('sync-btn');
+            const latency = document.getElementById('latency-display');
+            const statusTxt = document.getElementById('sync-status-text');
+            const warn = document.getElementById('collision-warn');
+
+            if(isSyncActive) {
+                btn.innerText = "SYNC: ON";
+                btn.className = "btn-interactive text-[10px] border border-neon-green text-neon-green px-2 py-1 rounded bg-neon-green/10 font-sci-fi";
+                latency.innerHTML = `0.000 <span class="text-xl text-neon-green/70">ms</span>`;
+                latency.className = "font-sci-fi text-4xl text-neon-green font-bold drop-shadow-[0_0_10px_rgba(0,255,102,0.8)] glitch-text";
+                statusTxt.innerText = "SYNC MODE: PERFECT";
+                statusTxt.className = "text-neon-cyan";
+                warn.classList.add('hidden');
+                cars = [];
+                addCustomLog("[TRAFFIC] Quantum Sync restored. Zero-Latency active.", "text-neon-green");
+            } else {
+                btn.innerText = "SYNC: OFF";
+                btn.className = "btn-interactive text-[10px] border border-neon-red text-neon-red px-2 py-1 rounded bg-neon-red/10 font-sci-fi";
+                latency.innerHTML = `245.8 <span class="text-xl text-neon-red/70">ms</span>`;
+                latency.className = "font-sci-fi text-4xl text-neon-red font-bold drop-shadow-[0_0_10px_rgba(255,0,60,0.8)] glitch-red";
+                statusTxt.innerText = "SYNC MODE: TRADITIONAL (LAG)";
+                statusTxt.className = "text-neon-red";
+                addCustomLog("[WARNING] Quantum Sync disabled. Latency increasing!", "text-neon-red");
+            }
+        }
+
+        class Car {
+            constructor(dir, chaotic = false) {
+                this.dir = dir;
+                this.speed = chaotic ? (2 + Math.random() * 3) : 4;
+                this.size = { w: 0, h: 0 };
+                this.color = chaotic ? '#ffffff' : ['#00f3ff', '#bc13fe', '#00ff66'][Math.floor(Math.random() * 3)];
+                this.crashed = false;
+                
+                const w = tfCanvas.width; const h = tfCanvas.height;
+                const roadW = 40;
+                const offset = chaotic ? (Math.random()*10 - 5) : 0;
+                
+                if (dir === 0) { this.x = w/2 - roadW/4 + offset; this.y = -20; this.size={w:8, h:16}; this.vx=0; this.vy=this.speed; }
+                if (dir === 1) { this.x = w/2 + roadW/4 - 8 + offset; this.y = h+20; this.size={w:8, h:16}; this.vx=0; this.vy=-this.speed; }
+                if (dir === 2) { this.x = w+20; this.y = h/2 - roadW/4 + offset; this.size={w:16, h:8}; this.vx=-this.speed; this.vy=0; }
+                if (dir === 3) { this.x = -20; this.y = h/2 + roadW/4 - 8 + offset; this.size={w:16, h:8}; this.vx=this.speed; this.vy=0; }
+            }
+            update() { if(!this.crashed) { this.x += this.vx; this.y += this.vy; } }
+            draw() {
+                tfCtx.fillStyle = this.crashed ? '#ff003c' : this.color;
+                tfCtx.shadowBlur = this.crashed ? 15 : 8; tfCtx.shadowColor = tfCtx.fillStyle;
+                tfCtx.fillRect(this.x, this.y, this.size.w, this.size.h);
+                tfCtx.shadowBlur = 0; 
+            }
+        }
+
+        function checkCollisions() {
+            let hasCollision = false;
+            for(let i=0; i<cars.length; i++) {
+                for(let j=i+1; j<cars.length; j++) {
+                    const c1 = cars[i]; const c2 = cars[j];
+                    if(!c1.crashed || !c2.crashed) {
+                        if (c1.x < c2.x + c2.size.w && c1.x + c1.size.w > c2.x &&
+                            c1.y < c2.y + c2.size.h && c1.y + c1.size.h > c2.y) {
+                            c1.crashed = true; c2.crashed = true; hasCollision = true;
+                        }
+                    }
+                }
+            }
+            if(hasCollision) {
+                document.getElementById('collision-warn').classList.remove('hidden');
+                setTimeout(() => document.getElementById('collision-warn').classList.add('hidden'), 2000);
+            }
+        }
+
+        function renderTraffic() {
+            tfCtx.clearRect(0, 0, tfCanvas.width, tfCanvas.height);
+            const w = tfCanvas.width; const h = tfCanvas.height; const roadW = 40;
+
+            tfCtx.fillStyle = '#111';
+            tfCtx.fillRect(w/2 - roadW/2, 0, roadW, h); tfCtx.fillRect(0, h/2 - roadW/2, w, roadW);
+            
+            tfCtx.strokeStyle = 'rgba(255,255,255,0.1)';
+            tfCtx.setLineDash([10, 10]); tfCtx.beginPath();
+            tfCtx.moveTo(w/2, 0); tfCtx.lineTo(w/2, h); tfCtx.moveTo(0, h/2); tfCtx.lineTo(w, h/2);
+            tfCtx.stroke(); tfCtx.setLineDash([]);
+
+            if(isSyncActive) {
+                if (trafficFrameCount % 40 === 0) { cars.push(new Car(0)); cars.push(new Car(1)); }
+                if ((trafficFrameCount + 20) % 40 === 0) { cars.push(new Car(2)); cars.push(new Car(3)); }
+            } else {
+                if (Math.random() < 0.05) cars.push(new Car(Math.floor(Math.random()*4), true));
+                checkCollisions();
+            }
+
+            cars.forEach(car => { car.update(); car.draw(); });
+            cars = cars.filter(c => c.x > -50 && c.x < w+50 && c.y > -50 && c.y < h+50);
+            
+            document.getElementById('vehicle-count').innerText = cars.length;
+            trafficFrameCount++;
+            requestAnimationFrame(renderTraffic);
+        }
+
+        // --- 4. Disaster Prediction Simulation ---
+        const dsCanvas = document.getElementById('disasterCanvas');
+        const dsCtx = dsCanvas.getContext('2d');
+        
+        let dsAngle = 0; let stormTarget = { angle: Math.random() * Math.PI*2, dist: 80 };
+        let disasterFrameCount = 0;
+
+        function rescanStorm() {
+            stormTarget.angle = Math.random() * Math.PI*2;
+            stormTarget.dist = 40 + Math.random() * 60;
+            addCustomLog("[AI] Rescanning global molecular patterns...", "text-neon-cyan");
+            setTimeout(() => addCustomLog("[AI] New storm trajectory calculated. Accuracy 100%.", "text-neon-green"), 800);
+        }
+        
+        function renderDisaster() {
+            dsCtx.clearRect(0, 0, dsCanvas.width, dsCanvas.height);
+            const cx = dsCanvas.width / 2; const cy = dsCanvas.height / 2;
+
+            dsCtx.strokeStyle = 'rgba(0, 243, 255, 0.1)';
+            for(let i=1; i<=4; i++) { dsCtx.beginPath(); dsCtx.arc(cx, cy, i*30, 0, Math.PI*2); dsCtx.stroke(); }
+
+            dsCtx.beginPath(); dsCtx.moveTo(cx, cy); dsCtx.arc(cx, cy, 150, dsAngle, dsAngle + 0.3); dsCtx.lineTo(cx, cy);
+            dsCtx.fillStyle = 'rgba(0, 243, 255, 0.15)'; dsCtx.fill();
+            dsAngle += 0.04;
+
+            const stormX = cx + Math.cos(stormTarget.angle) * stormTarget.dist + Math.sin(disasterFrameCount * 0.05) * 3;
+            const stormy = cy + Math.sin(stormTarget.angle) * stormTarget.dist + Math.cos(disasterFrameCount * 0.05) * 3;
+            
+            dsCtx.beginPath(); dsCtx.arc(stormX, stormy, 6, 0, Math.PI*2);
+            dsCtx.fillStyle = '#ff003c'; dsCtx.shadowBlur = 10; dsCtx.shadowColor = '#ff003c'; dsCtx.fill(); dsCtx.shadowBlur = 0;
+
+            const targetX = cx + Math.cos(stormTarget.angle + Math.PI) * (stormTarget.dist * 0.8);
+            const targetY = cy + Math.sin(stormTarget.angle + Math.PI) * (stormTarget.dist * 0.8);
+
+            dsCtx.beginPath(); dsCtx.moveTo(stormX, stormy); dsCtx.quadraticCurveTo(cx, cy, targetX, targetY);
+            dsCtx.strokeStyle = 'rgba(0, 243, 255, 0.5)'; dsCtx.setLineDash([4, 4]); dsCtx.lineWidth = 1.5; dsCtx.stroke(); dsCtx.setLineDash([]);
+
+            dsCtx.beginPath(); dsCtx.arc(targetX, targetY, 3, 0, Math.PI*2);
+            dsCtx.fillStyle = '#00f3ff'; dsCtx.fill();
+            
+            dsCtx.font = "9px Orbitron"; dsCtx.fillStyle = '#00f3ff';
+            dsCtx.fillText("PREDICTED", targetX + 8, targetY - 5); dsCtx.fillText("IMPACT", targetX + 8, targetY + 5);
+
+            disasterFrameCount++;
+            requestAnimationFrame(renderDisaster);
+        }
+
+        // --- 5. Network Nodes Canvas ---
+        const nwCanvas = document.getElementById('networkCanvas');
+        const nwCtx = nwCanvas.getContext('2d');
+        let nodes = [];
+        
+        function createNode(x, y) {
+            return { x: x || Math.random() * nwCanvas.width, y: y || Math.random() * nwCanvas.height, vx: (Math.random() - 0.5) * 0.8, vy: (Math.random() - 0.5) * 0.8, life: 0 };
+        }
+
+        function initNodes() {
+            nodes = []; for(let i=0; i<40; i++) nodes.push(createNode());
+            document.getElementById('node-count').innerText = nodes.length;
+        }
+
+        function injectNode() {
+            for(let i=0; i<5; i++) { nodes.push(createNode(nwCanvas.width/2 + (Math.random()*40-20), nwCanvas.height/2 + (Math.random()*40-20))); }
+            document.getElementById('node-count').innerText = nodes.length;
+            addCustomLog(`[CWL] Injected new neural links. Total: ${nodes.length}`, "text-neon-purple");
+        }
+
+        function renderNetwork() {
+            nwCtx.clearRect(0, 0, nwCanvas.width, nwCanvas.height);
+            for(let i=0; i<nodes.length; i++) {
+                nodes[i].x += nodes[i].vx; nodes[i].y += nodes[i].vy; nodes[i].life++;
+                if(nodes[i].x < 0 || nodes[i].x > nwCanvas.width) nodes[i].vx *= -1;
+                if(nodes[i].y < 0 || nodes[i].y > nwCanvas.height) nodes[i].vy *= -1;
+
+                for(let j=i+1; j<nodes.length; j++) {
+                    const dx = nodes[i].x - nodes[j].x; const dy = nodes[i].y - nodes[j].y; const dist = Math.sqrt(dx*dx + dy*dy);
+                    if(dist < 60) {
+                        nwCtx.beginPath(); nwCtx.moveTo(nodes[i].x, nodes[i].y); nwCtx.lineTo(nodes[j].x, nodes[j].y);
+                        nwCtx.strokeStyle = `rgba(188, 19, 254, ${1 - dist/60})`; nwCtx.lineWidth = 0.5; nwCtx.stroke();
+                    }
+                }
+                nwCtx.beginPath(); nwCtx.arc(nodes[i].x, nodes[i].y, 1.5, 0, Math.PI*2);
+                nwCtx.fillStyle = nodes[i].life < 60 ? '#ffffff' : '#00f3ff'; nwCtx.fill();
+            }
+            requestAnimationFrame(renderNetwork);
+        }
+
+        // --- Initialization ---
+        function initAllCanvas() {
+            resizeCanvas(tfCanvas, 'traffic-container');
+            resizeCanvas(dsCanvas, 'disaster-container');
+            resizeCanvas(nwCanvas, 'network-container');
+        }
+
+        window.addEventListener('resize', () => {
+            initAllCanvas();
+            if(nodes.length === 0) initNodes();
+        });
+
+        setTimeout(() => {
+            initAllCanvas();
+            initNodes();
+            renderTraffic();
+            renderDisaster();
+            renderNetwork();
+        }, 100);
+
+    </script>
+</body>
+</html>
