@@ -11,6 +11,10 @@ OmniCognitiveFabric v2.0
 
 รัน:
   streamlit run omni_cognitive_fabric_v2.py
+  
+  or
+  
+  python -m streamlit run omni_cognitive_fabric_v2.py
 ────────────────────────────────────────────────────────────────
 """
 
