@@ -10,10 +10,11 @@ https://omnicognitivefabric.streamlit.app/
 
 
 **MVP**
---  NotebookLM :: Video & Info graphic 
+Video & Info Graphic
 https://drive.google.com/drive/folders/1APCD3xz8SruWC_QnKQlT3RbLaOOyKSfj?usp=sharing4
 
-
+NotebookLM: Video 
+https://youtu.be/TgNSotySWjA
  
  
 ---
